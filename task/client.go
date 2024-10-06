@@ -14,6 +14,10 @@ func (c *Client) AddTask(task Task) {
 	c.tasks = append(c.tasks, task)
 }
 
+func (c *Client) CleanTasks() {
+	c.tasks = nil
+}
+
 func (c *Client) DeleteTask(taskID int) error {
 	if taskID <= 0 {
 		return errors.New("task-id can not be negative")
