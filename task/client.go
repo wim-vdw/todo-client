@@ -12,7 +12,8 @@ import (
 type Tasks []Task
 
 type Client struct {
-	tasks Tasks
+	Filename string
+	tasks    Tasks
 }
 
 func (c *Client) AddTask(task Task) {
@@ -88,8 +89,8 @@ func (c *Client) DisplayTasks(sortPriority bool, displayPriority bool) {
 	}
 }
 
-func (c *Client) ReadTasks(filename string) error {
-	data, err := os.ReadFile(filename)
+func (c *Client) ReadTasks() error {
+	data, err := os.ReadFile(c.Filename)
 	if err != nil {
 		return err
 	}
@@ -103,12 +104,12 @@ func (c *Client) ReadTasks(filename string) error {
 	return nil
 }
 
-func (c *Client) SaveTasks(filename string) error {
+func (c *Client) SaveTasks() error {
 	data, err := json.Marshal(c.tasks)
 	if err != nil {
 		return err
 	}
-	err = os.WriteFile(filename, data, 0644)
+	err = os.WriteFile(c.Filename, data, 0644)
 	if err != nil {
 		return err
 	}
