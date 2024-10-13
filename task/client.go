@@ -63,6 +63,21 @@ func (c *Client) UpdateTaskDescription(taskID int, description string) error {
 	return nil
 }
 
+func (c *Client) UpdateTaskPriority(taskID int, priority int) error {
+	if taskID <= 0 {
+		return errors.New("task-id can not be negative")
+	}
+	if taskID > len(c.tasks) {
+		return errors.New("task-id does not exist")
+	}
+	taskID -= 1
+	err := c.tasks[taskID].SetPriority(priority)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func (c *Client) DisplayTasks(sortPriority bool, displayPriority bool) {
 	if len(c.tasks) == 0 {
 		fmt.Println("Nothing on your To-Do list for the moment.")
