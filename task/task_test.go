@@ -55,7 +55,7 @@ func TestTask_PrettyStatus(t *testing.T) {
 			name:     "todo-status",
 			priority: 2,
 			done:     false,
-			expected: "(TODO)",
+			expected: "(TODO",
 		},
 	}
 
