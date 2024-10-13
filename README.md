@@ -1,7 +1,7 @@
 # Todo List API Client
 
 This is a simple Go-based API client to manage a to-do list. It allows you to create and manage tasks with descriptions,
-priorities, and statuses.
+priorities and status.
 
 Features:
 
