@@ -84,11 +84,11 @@ func (c *Client) DisplayTasks(sortPriority bool, displayPriority bool) {
 	} else {
 		w := tabwriter.NewWriter(os.Stdout, 4, 0, 1, ' ', 0)
 		if displayPriority {
-			fmt.Fprintln(w, "ID\tTask\tPriority\tStatus")
-			fmt.Fprintln(w, "--\t----\t------\t--------")
+			fmt.Fprintln(w, "ID \tTask \tPriority \tStatus")
+			fmt.Fprintln(w, "---\t-----\t---------\t-------")
 		} else {
-			fmt.Fprintln(w, "ID\tTask\tStatus")
-			fmt.Fprintln(w, "--\t----\t------")
+			fmt.Fprintln(w, "ID \tTask \tStatus")
+			fmt.Fprintln(w, "---\t-----\t-------")
 		}
 		if sortPriority {
 			sort.Sort(ByPriority(c.tasks))
