@@ -84,7 +84,7 @@ func (c *Client) DisplayTasks(sortPriority bool, displayPriority bool) {
 	} else {
 		w := tabwriter.NewWriter(os.Stdout, 4, 0, 1, ' ', 0)
 		if displayPriority {
-			fmt.Fprintln(w, "ID\tTask\tStatus\tPriority")
+			fmt.Fprintln(w, "ID\tTask\tPriority\tStatus")
 			fmt.Fprintln(w, "--\t----\t------\t--------")
 		} else {
 			fmt.Fprintln(w, "ID\tTask\tStatus")
@@ -95,7 +95,7 @@ func (c *Client) DisplayTasks(sortPriority bool, displayPriority bool) {
 		}
 		for _, t := range c.tasks {
 			if displayPriority {
-				fmt.Fprintln(w, t.PrettyPosition()+"\t"+t.Description+"\t"+t.PrettyColorStatus()+"\t"+t.PrettyPriority())
+				fmt.Fprintln(w, t.PrettyPosition()+"\t"+t.Description+"\t"+t.PrettyPriority()+"\t"+t.PrettyColorStatus())
 			} else {
 				fmt.Fprintln(w, t.PrettyPosition()+"\t"+t.Description+"\t"+t.PrettyColorStatus())
 			}
