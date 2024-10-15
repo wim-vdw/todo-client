@@ -5,6 +5,12 @@ import (
 	"strconv"
 )
 
+const (
+	ColorGreen  = "\u001b[32m"
+	ColorYellow = "\u001b[33m"
+	ColorReset  = "\u001b[0m"
+)
+
 type Task struct {
 	Description string `json:"description"`
 	Priority    int    `json:"priority"`
@@ -48,5 +54,13 @@ func (t *Task) PrettyStatus() string {
 		return "(DONE)"
 	} else {
 		return "(TODO)"
+	}
+}
+
+func (t *Task) PrettyColorStatus() string {
+	if t.Done {
+		return ColorGreen + "(DONE)" + ColorReset
+	} else {
+		return ColorYellow + "(TODO)" + ColorReset
 	}
 }

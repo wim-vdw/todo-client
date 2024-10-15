@@ -72,6 +72,35 @@ func TestTask_PrettyStatus(t *testing.T) {
 	}
 }
 
+func TestTask_PrettyColorStatus(t *testing.T) {
+	tests := []TestData{
+		{
+			name:     "done-status",
+			priority: 1,
+			done:     true,
+			expected: ColorGreen + "(DONE)" + ColorReset,
+		},
+		{
+			name:     "todo-status",
+			priority: 2,
+			done:     false,
+			expected: ColorYellow + "(TODO)" + ColorReset,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			task := Task{
+				Description: test.description,
+				Done:        test.done,
+			}
+			if got := task.PrettyColorStatus(); got != test.expected {
+				t.Errorf("got %q, want %q", got, test.expected)
+			}
+		})
+	}
+}
+
 func TestTask_PrettyPosition(t *testing.T) {
 	tests := []TestData{
 		{
