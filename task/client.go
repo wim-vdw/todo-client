@@ -95,9 +95,9 @@ func (c *Client) DisplayTasks(sortPriority bool, displayPriority bool) {
 		}
 		for _, t := range c.tasks {
 			if displayPriority {
-				fmt.Fprintln(w, t.PrettyPosition()+"\t"+t.Description+"\t"+t.PrettyStatus()+"\t"+t.PrettyPriority())
+				fmt.Fprintln(w, t.PrettyPosition()+"\t"+t.Description+"\t"+t.PrettyColorStatus()+"\t"+t.PrettyPriority())
 			} else {
-				fmt.Fprintln(w, t.PrettyPosition()+"\t"+t.Description+"\t"+t.PrettyStatus())
+				fmt.Fprintln(w, t.PrettyPosition()+"\t"+t.Description+"\t"+t.PrettyColorStatus())
 			}
 		}
 		w.Flush()
